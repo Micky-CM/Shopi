@@ -1,11 +1,41 @@
+import { Link, useParams } from "react-router-dom"
+import { useContext } from "react"
+import { ShoppingCartContext } from "../../Context"
+import { ChevronLeftIcon } from "@heroicons/react/16/solid"
 import Layout from "../../Components/Layout"
+import OrderCard from "../../Components/OrderCard"
 
-function MyOrder() {
+const MyOrder = ()=> {
+  const context = useContext(ShoppingCartContext)
+  const params = useParams()
+  const indexOrderPath = Number(params.id)
+  const orders = !isNaN(indexOrderPath)  ?
+    context.order?.[indexOrderPath].products :
+    context.order?.slice(-1)[0].products
+
     return (
       <Layout>
-        
+        <div className="flex justify-center relative w-80 mb-6">
+          <h1>My Order</h1>
+          <Link to={'/my-orders'} className="absolute left-0">
+            <ChevronLeftIcon className="h-6 w-6 text-purple-500 cursor-pointer" />
+          </Link>
+        </div>
+        <div className="flex flex-col w-80">
+          {
+            orders.map((product, index)=> (
+              <OrderCard
+                key={product.id}
+                id={!isNaN(indexOrderPath) ? product.id : index}
+                title={product.title}
+                image={product.image}
+                price={product.price}
+              />
+            ))
+          }
+        </div>
       </Layout>
     )
   }
-  
+
   export default MyOrder
