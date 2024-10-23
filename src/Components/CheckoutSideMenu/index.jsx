@@ -31,12 +31,12 @@ const CheckoutSideMenu = ()=> {
 
   return (
     <aside
-      className={`${context.isCheckoutSideMenuOpen ? 'flex' : 'hidden'} flex-col fixed bg-white border border-black rounded-lg right-6 top-[68px] w-[360px] h-[calc(100vh-68px)]`}>
+      className={`${context.isCheckoutSideMenuOpen ? 'flex' : 'hidden'} flex-col fixed bg-white border border-black rounded-lg right-6 top-[70px] w-[360px] h-[calc(100vh-72px)]`}>
       <div className="flex justify-between items-center p-6">
         <h2 className="font-medium text-xl">My Order</h2>
         <button>
           <XMarkIcon
-            className="h6 w-6 text-black hover:text-purple-500"
+            className="h-6 w-6 text-black hover:text-purple-500"
             onClick={()=> context.closeCheckoutSideMenu()}
           />
         </button>

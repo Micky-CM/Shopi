@@ -3,15 +3,15 @@ import { XMarkIcon } from "@heroicons/react/16/solid"
 const OrderCard = props=> {
   const { id, title, image, price, handleDelete } = props
   return (
-    <div className="flex justify-between items-center mb-3">
+    <div className="flex justify-between items-center mb-3 w-full">
       <div className="flex items-center gap-2">
-        <figure className="w-20 h-20">
-          <img className="w-full h-full rounded-lg object-cover" src={image} alt={title} />
+        <figure className="w-14 h-14 flex-shrink-0">
+          <img className="w-full h-full rounded-lg object-contain" src={image} alt={title} />
         </figure>
-        <p className="text-sm font-light ">{title}</p>
+        <p className="text-sm font-light max-w-[150px] truncate">{title}</p>
       </div>
       <div className="flex items-center gap-2">
-        <p className="text-lg font-medium">{price}</p>
+        <p className="text-lg font-medium min-w-[50px] text-right">{price}</p>
           {
             handleDelete &&
             <XMarkIcon
